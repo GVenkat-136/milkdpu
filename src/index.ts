@@ -2,12 +2,16 @@ import express, { Application} from 'express';
 import dotenv from 'dotenv';
 import connectToDatabase from './config/db';
 import { errorHandler } from './config/errorHandler';
+import cors from 'cors';
 import routes from './routes';
 
 dotenv.config();
 
 const app: Application = express();
 app.use(express.json());
+app.use(cors({
+    origin:'*'
+}))
 
 app.use('/api',routes)
 
