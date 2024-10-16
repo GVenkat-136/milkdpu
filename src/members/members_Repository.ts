@@ -19,4 +19,8 @@ export default class MemberRepository {
     async getAll (id:ObjectId){
         return await membersModal.find({orgnaizationId:id,isActive:true})
     }
+
+    async deleteMember(id:ObjectId){
+        return await membersModal.findByIdAndUpdate({_id:id},{$set:{isActive:false}})
+    }
 }

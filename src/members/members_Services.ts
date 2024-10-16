@@ -49,3 +49,7 @@ export async function getMember(code:number) {
 export async function getAll(params:any) {
     return await memberRepository.getAll(params)
 }
+
+export async function deleteMember(id:ObjectId) {
+    return await memberRepository.deleteMember(id)
+}

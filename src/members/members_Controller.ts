@@ -57,3 +57,17 @@ export async function getAll(req:Request,res:Response,next:NextFunction) {
         next(error)
     }
 }
+
+export async function deleteMember(req:Request,res:Response,next:NextFunction) {
+    try {
+        const user = req.user
+        const memberId :number | any = req.params.id
+        if (user?.role != 'admin') {
+            throw { statusCode:400, message: 'access denided' };
+        }
+        await memberService.deleteMember(memberId)
+        res.status(201).send({message:"Member Deleted Successfully"})
+    } catch (error) {
+        next(error)
+    }
+}
