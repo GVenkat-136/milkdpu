@@ -13,7 +13,7 @@ const collectionsSchema: Schema<collections> = new mongoose.Schema<collections>(
     rate: {type:Number},
     amount: {type:Number},
     isEdited: {type:Boolean},
-    isActive:{type:Boolean},
+    isActive:{type:Boolean,default:true},
     orgnaizationId:{type:Schema.Types.ObjectId,ref:'organizations',required:true}
 },{versionKey:false,timestamps:true});
 
