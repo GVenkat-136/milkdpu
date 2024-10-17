@@ -198,7 +198,8 @@ export function validateMilkRecordUpdate(record: Partial<collections>) {
 
   // Validate date (only if present)
   if (record.date !== undefined) {
-    if (!(record.date instanceof Date) || isNaN(record.date.getTime())) {
+    const dateValue = new Date(record.date);
+    if (isNaN(dateValue.getTime())) {
       errors.message = "Date must be a valid date.";
     }
   }
